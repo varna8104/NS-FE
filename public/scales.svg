@@ -1,0 +1,22 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="black" stroke-width="2" fill="none">
+    <!-- Central pillar -->
+    <rect x="30" y="10" width="4" height="36" fill="black"/>
+    <!-- Top circle -->
+    <circle cx="32" cy="8" r="3" fill="black"/>
+    <!-- Base -->
+    <ellipse cx="32" cy="54" rx="12" ry="4" fill="black"/>
+    <!-- Arms -->
+    <path d="M16 18 Q32 4 48 18" />
+    <!-- Left chain -->
+    <line x1="20" y1="20" x2="16" y2="34" />
+    <line x1="24" y1="20" x2="20" y2="34" />
+    <!-- Right chain -->
+    <line x1="44" y1="20" x2="48" y2="34" />
+    <line x1="40" y1="20" x2="44" y2="34" />
+    <!-- Left pan -->
+    <ellipse cx="18" cy="36" rx="6" ry="2.5" fill="black"/>
+    <!-- Right pan -->
+    <ellipse cx="46" cy="36" rx="6" ry="2.5" fill="black"/>
+  </g>
+</svg> 
