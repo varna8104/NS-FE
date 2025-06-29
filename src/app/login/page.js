@@ -157,23 +157,15 @@ export default function LoginPage() {
             
             <div className="px-4 py-3 text-center">
               <p className="text-[#0d141c] text-sm font-normal leading-normal">
-                Don't have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <Link href={`/register?zone=${isCopZone ? 'cop' : 'user'}`} className="text-[#248bf3] hover:underline">
                   Register here
                 </Link>
               </p>
-              <div className="mt-4 flex gap-4 justify-center">
-                <Link href="/login?zone=user" className={`text-sm px-3 py-1 rounded ${!isCopZone ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:bg-gray-100'}`}>
-                  User Zone
-                </Link>
-                <Link href="/login?zone=cop" className={`text-sm px-3 py-1 rounded ${isCopZone ? 'bg-green-100 text-green-700' : 'text-gray-600 hover:bg-gray-100'}`}>
-                  Cop Zone
-                </Link>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   );
-} 
+}
