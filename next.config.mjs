@@ -5,12 +5,22 @@ const nextConfig = {
   
   // Handle API calls to backend
   async rewrites() {
+    const apiUrl =
+      process.env.NODE_ENV === 'production'
+        ? process.env.NEXT_PUBLIC_API_URL
+        : 'http://localhost:8000';
+
+    // Ensure apiUrl is valid
+    if (!apiUrl || (!apiUrl.startsWith('http://') && !apiUrl.startsWith('https://'))) {
+      throw new Error(
+        'NEXT_PUBLIC_API_URL is not set or does not start with http:// or https://'
+      );
+    }
+
     return [
       {
         source: '/api/:path*',
-        destination: process.env.NODE_ENV === 'production' 
-          ? `${process.env.NEXT_PUBLIC_API_URL}/api/:path*`
-          : 'http://localhost:8000/api/:path*',
+        destination: `${apiUrl}/api/:path*`,
       },
     ];
   },
