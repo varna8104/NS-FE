@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { API_BASE_URL } from '../utils/api';
 
 export default function HomePage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -354,7 +355,7 @@ function ChatbotModal() {
     setInput("");
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/complaints/legal-chatbot/", {
+      const res = await fetch(`${API_BASE_URL}/api/complaints/legal-chatbot/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -458,7 +459,7 @@ function SummarizerModal() {
     formData.append("file", file);
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/complaints/summarize-legal-document/", {
+      const res = await fetch(`${API_BASE_URL}/api/complaints/summarize-legal-document/`, {
         method: "POST",
         headers: {
           ...(token && { Authorization: `Token ${token}` }),
@@ -494,7 +495,7 @@ function SummarizerModal() {
     setAnswer("");
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/complaints/ask-legal-document/", {
+      const res = await fetch(`${API_BASE_URL}/api/complaints/ask-legal-document/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
