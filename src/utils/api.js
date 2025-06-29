@@ -1,10 +1,8 @@
 // API configuration utility
 const getApiUrl = () => {
-  // Always use the production backend URL in production
   if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
-    return 'https://ns-be.onrender.com';
+    return process.env.NEXT_PUBLIC_API_URL || 'https://ns-be.onrender.com';
   }
-  // In development, use localhost
   return 'http://localhost:8000';
 };
 
