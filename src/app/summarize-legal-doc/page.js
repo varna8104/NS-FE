@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from '../../utils/api';
 
 export default function SummarizeLegalDocPage() {
   const [file, setFile] = useState(null);
@@ -42,7 +43,7 @@ export default function SummarizeLegalDocPage() {
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/complaints/summarize-legal-document/",
+        `${API_BASE_URL}/api/complaints/summarize-legal-document/`,
         formData,
         {
           headers: {
@@ -78,7 +79,7 @@ export default function SummarizeLegalDocPage() {
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/complaints/ask-legal-document/",
+        `${API_BASE_URL}/api/complaints/ask-legal-document/`,
         {
           document_text: documentText,
           question: question,

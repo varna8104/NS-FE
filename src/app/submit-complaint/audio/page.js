@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { API_BASE_URL } from '../../../utils/api';
 
 export default function AudioComplaintPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -139,7 +140,7 @@ export default function AudioComplaintPage() {
       formDataToSend.append('name', formData.name);
       formDataToSend.append('location', formData.location);
 
-      const response = await fetch('http://localhost:8000/api/complaints/audio/', {
+      const response = await fetch(`${API_BASE_URL}/api/complaints/audio/`, {
         method: 'POST',
         headers: {
           'Authorization': `Token ${token}`,

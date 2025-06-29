@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { API_BASE_URL } from '../../utils/api';
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -47,8 +48,8 @@ export default function RegisterPage() {
 
     try {
       const endpoint = formData.user_type === 'cop' 
-        ? 'http://localhost:8000/api/auth/cop/register/'
-        : 'http://localhost:8000/api/auth/register/';
+        ? `${API_BASE_URL}/api/auth/cop/register/`
+        : `${API_BASE_URL}/api/auth/register/`;
       
       // Prepare data for the API
       let apiData = { ...formData };

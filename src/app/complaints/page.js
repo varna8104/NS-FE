@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { API_BASE_URL } from '../../utils/api';
 
 const PRIORITY_OPTIONS = ['all', 'high', 'medium', 'low'];
 const EMOTION_OPTIONS = ['all', 'fear', 'anger', 'sadness', 'disgust', 'happy', 'neutral'];
@@ -58,7 +59,7 @@ export default function ComplaintsPage() {
 
   const fetchComplaints = async (token) => {
     try {
-      const response = await fetch('http://localhost:8000/api/complaints/', {
+      const response = await fetch(`${API_BASE_URL}/api/complaints/`, {
         headers: {
           'Authorization': `Token ${token}`,
         },
@@ -130,7 +131,7 @@ export default function ComplaintsPage() {
     setDeletingId(id);
     const token = localStorage.getItem('token');
     try {
-      const response = await fetch(`http://localhost:8000/api/complaints/${id}/`, {
+      const response = await fetch(`${API_BASE_URL}/api/complaints/${id}/`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Token ${token}`,
@@ -171,7 +172,7 @@ export default function ComplaintsPage() {
     setUpdatingStatus(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:8000/api/complaints/${complaintId}/status/`, {
+      const response = await fetch(`${API_BASE_URL}/api/complaints/${complaintId}/status/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

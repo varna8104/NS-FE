@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import axios from "axios";
+import { API_BASE_URL } from '../../utils/api';
 
 export default function UploadPage() {
   const [audio, setAudio] = useState(null);
@@ -58,7 +59,7 @@ export default function UploadPage() {
     formData.append("location", location);
     try {
       setLoading(true);
-      const res = await axios.post("http://127.0.0.1:8000/api/transcribe/", formData);
+      const res = await axios.post(`${API_BASE_URL}/api/transcribe/`, formData);
       setResponse(res.data);
     } catch (error) {
       console.error(error);

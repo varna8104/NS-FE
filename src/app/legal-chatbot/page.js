@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from '../../utils/api';
 
 export default function LegalChatbotPage() {
   const [input, setInput] = useState("");
@@ -27,7 +28,7 @@ export default function LegalChatbotPage() {
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/complaints/legal-chatbot/",
+        `${API_BASE_URL}/api/complaints/legal-chatbot/`,
         { question: userMsg.text, model: "llama-3.1-8b-instant" },
         {
           headers: {

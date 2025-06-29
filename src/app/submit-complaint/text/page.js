@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { API_BASE_URL } from '../../../utils/api';
 
 export default function TextComplaintPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,7 +46,7 @@ export default function TextComplaintPage() {
       return;
     }
     try {
-      const response = await fetch('http://localhost:8000/api/detect-language/', {
+      const response = await fetch(`${API_BASE_URL}/api/detect-language/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text }),
@@ -86,7 +87,7 @@ export default function TextComplaintPage() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:8000/api/complaints/text/', {
+      const response = await fetch(`${API_BASE_URL}/api/complaints/text/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
