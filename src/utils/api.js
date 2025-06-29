@@ -1,8 +1,8 @@
 // API configuration utility
 const getApiUrl = () => {
-  // In production, use the environment variable
+  // Always use the production backend URL in production
   if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
-    return process.env.NEXT_PUBLIC_API_URL || 'https://your-backend-url.vercel.app';
+    return 'https://ns-be.onrender.com';
   }
   // In development, use localhost
   return 'http://localhost:8000';
